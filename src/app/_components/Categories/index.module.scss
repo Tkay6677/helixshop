@@ -1,0 +1,41 @@
+@use '../../_css/queries.scss' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.titleWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h3 {
+    font-weight: 400;
+  }
+}
+
+.list {
+  display: grid;
+  gap: 30px;
+  padding: 0;
+  grid-template-columns: repeat(3, 1fr);
+
+  @include small-break {
+    display: flex; /* Switch to flexbox for small screens */
+    overflow-x: auto;
+    gap: 20px; /* Adjust gap for mobile */
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+
+    & > * {
+      flex: 0 0 auto; /* Ensure cards retain their sizes */
+      scroll-snap-align: start; /* Snap effect for cards */
+    }
+
+    &::-webkit-scrollbar {
+      display: none; /* Hide scrollbar for cleaner look */
+    }
+  }
+}
